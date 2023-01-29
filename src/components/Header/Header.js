@@ -1,7 +1,7 @@
 import "./Header.scss";
 import { React } from "react";
 import { useState, createContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import ReactSwitch from "react-switch";
 import { TickerTape } from "react-ts-tradingview-widgets";
 
@@ -68,20 +68,24 @@ function Header() {
       <ThemeContext.Provider value={{ theme, setTheme }}>
         <section>
           <div className="header" id={theme}>
-            <div className="header_logo-container">
-              <div className="header_logo">
-                <span className="header_green">Trade</span>
-                <span className="header_yellow">By</span>
-                <span className="header_red">Colors</span>
+            <NavLink to={"/"}>
+              <div className="header_logo-container">
+                <div className="header_logo">
+                  <span className="header_green">Trade</span>
+                  <span className="header_yellow">By</span>
+                  <span className="header_red">Colors</span>
+                </div>
+                <div className="header_logo-subheader">
+                  Highlight Market Momentum
+                </div>
               </div>
-              <div className="header_logo-subheader">
-                Highlight Market Momentum
-              </div>
-            </div>
+            </NavLink>
 
             <div className="header_hamburger">
               <div className="header_watchlist">Watchlist</div>
-              <div className="header_about">About</div>
+              <NavLink to={"/About"} style={{ textDecorationColor: "none" }}>
+                <div className="header_about">About</div>
+              </NavLink>
               <div className="header_switch">
                 <label className="header_switch-label"></label>
                 <div className="header_switch">

@@ -1,0 +1,13 @@
+@use "variable" as *;
+@use "typography" as *;
+@use "mixins" as *;
+
+
+* {
+    margin: unset;
+    padding: unset;
+    border: unset;
+    text-decoration: none;
+    list-style: none;
+    font-family: "Poppins-Light";
+}

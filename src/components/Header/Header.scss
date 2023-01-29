@@ -1,3 +1,7 @@
+@use "../../styles/typography" as *;  
+    
+    
+    
     .header{
     display: flex;
     flex-direction: row;
@@ -33,7 +37,7 @@
     }
     &_logo-subheader{
         font-size: 14px;
-        color: #3500D3;
+        color: #144e70;
         font-weight: 500;
     }
     &_watchlist{

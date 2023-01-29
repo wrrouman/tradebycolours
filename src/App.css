@@ -1,10 +1,16 @@
 #light {
-  background-color: #d1d7e07d;
+  background-color: #DCE1E3;
   transition: background-color 0.5s ease-in;
 }
 
 #dark {
-  background-color: #2f4454ce;
+  background-color: #393f4daf;
   transition: background-color 0.5s ease-in;
   
+}
+
+*{
+  text-decoration: none;
+  list-style: none;
+  text-decoration-color: none;
 }
