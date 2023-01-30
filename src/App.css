@@ -9,8 +9,17 @@
   
 }
 
+#link {
+  text-decoration-color: none;
+}
+
 *{
   text-decoration: none;
   list-style: none;
+  margin: 0;
+  
+}
+
+Link{
   text-decoration-color: none;
 }

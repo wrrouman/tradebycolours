@@ -1,4 +1,6 @@
 import "./About.scss"
+import { ThemeContext } from "../Header/Header";
+import { useState,createContext } from "react";
 
 
 
@@ -14,10 +16,14 @@ import TSLA_2hr from "../../assets/images/TSLA_2hr.png";
 
 
 
+
 function About() {
+
+  
   return (
     <>
-      <h3>What is Trade By Colors</h3>
+    <ThemeContext.Provider>
+      <h3 >What is Trade By Colors</h3>
       <p>
         Trade By Colors helps retail traders and investors stay on the right
         side of market by highlting market Momentum using our technical
@@ -31,7 +37,7 @@ function About() {
       <img src={TSLA_daily} alt="FCX" />
       <img src={META_4hr} alt="FCX" />
       <img src={TSLA_2hr} alt="FCX" />
-     
+      </ThemeContext.Provider>
     </>
   );
 }

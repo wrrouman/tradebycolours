@@ -55,13 +55,17 @@ const styles = {
 
 export const ThemeContext = createContext(null);
 
+
+
 // export const ThemeContext = createContext(null);
 function Header() {
-  const [theme, setTheme] = useState("dark");
-
+  
   const toggleTheme = () => {
     setTheme((curr) => (curr === "light" ? "dark" : "light"));
   };
+  
+  const [theme, setTheme] = useState("dark");
+  
 
   return (
     <>
@@ -83,9 +87,9 @@ function Header() {
 
             <div className="header_hamburger">
               <div className="header_watchlist">Watchlist</div>
-              <NavLink to={"/About"} style={{ textDecorationColor: "none" }}>
+              <Link to={"/About"} id="link">
                 <div className="header_about">About</div>
-              </NavLink>
+              </Link>
               <div className="header_switch">
                 <label className="header_switch-label"></label>
                 <div className="header_switch">
