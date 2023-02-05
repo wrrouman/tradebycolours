@@ -1,17 +1,3 @@
-#light {
-  background-color: #DCE1E3;
-  transition: background-color 0.5s ease-in;
-}
-
-#dark {
-  background-color: #393f4daf;
-  transition: background-color 0.5s ease-in;
-  
-}
-
-#link {
-  text-decoration-color: none;
-}
 
 *{
   text-decoration: none;
@@ -22,4 +8,10 @@
 
 Link{
   text-decoration-color: none;
+}
+
+body{
+  margin: 0px;
+  
+  
 }

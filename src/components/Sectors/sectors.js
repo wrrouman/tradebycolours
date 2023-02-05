@@ -1,36 +1,29 @@
 import axios from "axios";
-import { getStockPrice } from "../../components/api/api";
+import { getStockPrice,stockLogo } from "../../components/api/api";
 import { createContext, useState, useEffect } from "react";
 import StockCard from "../Stockcard/Stockcard";
 
+
+
 function Sectors() {
+
 
   const [stocksData, setStocksData] = useState();
 
+  const [logo, setlogo] = useState();
+  
+  //logo call (Need to figue out how to batch call)
+  useEffect(() => {
+    stockLogo()
+      .then((res) => {
+        console.log(res.data);
+        // setlogo(res.data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
 
-  // useEffect(() => {
-  //   getStockPrice()
-  //     .then((resp) => resp.json())
-  //     .then((response) => setStockData(response));
-  // }, []);
-
-
-  //Second API call not working 
-  // useEffect(() => {
-  //   fetch(getStockPrice)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       setStockData(data);
-  //     })
-  //     .catch((err) => {
-      
-  //     });
-  // }, []);
-
-
-  // Origional API call returning an OBJECT
+  // Origional API call returning an OBJECT for ticker symbols
   useEffect(() => {
     getStockPrice()
       .then((res) => {
@@ -41,11 +34,15 @@ function Sectors() {
       .catch((error) => console.log(error));
   }, []);
 
+  
+
   const renderStockCards = () => {
       // setup an array to hold the react components, initialize as empty array
       const stockCards = [];
 
-      // for in loop over stockData
+
+
+      // for in loop over stockData to loop since API data is returned as an OBJECT
       for(let stockKey in stocksData) {
           const stockData = stocksData[stockKey];
         // for each stock Object, push a StockCard component into the array
@@ -62,8 +59,13 @@ function Sectors() {
     <>
 
     <h1>S&P 500 and Sector Momentum </h1>
-    {/* some kind of defensive programming logic to prevent variables 
-    from being accessed before they have been properly initialized */}
+
+
+    {/* Defensive programming logic to prevent variables 
+    from being accessed before they have been properly initialized 
+    and timing out the API call*/}
+
+
     {/* if (stockData && stockData.length > 0) {
 
     } */}
@@ -74,13 +76,7 @@ function Sectors() {
     {/* markup for a parent container */}
     </> : <p>Loading...</p>
     }
-      {/* <div>{stockData.name}</div>
-      <div>{stockData.close}</div>
-      <div>{stockData.NVDA.name}</div>
-      <div>{stockData.AAPL.name}</div>
-      <div>{stockData.percent_change}</div>
-      <div>{stockData.datetime}</div> */}
-
+    
     </>
   );
 }

@@ -1,7 +1,47 @@
 
 
+
 img {
-    width: 400px;
+    width: 350px;
     height: 300px;
+    border-radius: 6px;  
+}
+img:hover{
+    transform: scale(1.5)
+}
+
+
+.about{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding-left: 8px;
+    padding-right: 8px;
+    justify-content: center;
+   
+}
+
+.about_whatistbc{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2rem;
+    width: 400px
     
+}
+
+.about_method{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 400px
+}
+
+.about_pics{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
 }
