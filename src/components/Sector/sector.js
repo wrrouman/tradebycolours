@@ -1,19 +1,24 @@
-import { getStockPrice } from "../../components/api/api";
+import axios from "axios";
+import { getStockPrice} from "../../components/api/api";
 import { useState, useEffect } from "react";
 import StockCard from "../Stockcard/Stockcard";
-import { sectorSymbols } from "../Utilities/sectorsData";
-import { formatQuoteData } from "../Utilities/toolBelt";
+import { sectors } from "../Utilities/sectorsData";
+import { useParams } from "react-router-dom";
 
-function Sectors() {
+function Sector() {
+  const { sectorSymbol } = useParams();
+  const { title, stockSymbols } = sectors[sectorSymbol];
+
   const [stocksData, setStocksData] = useState();
+
 
   // Origional API call returning an OBJECT for ticker symbols
   useEffect(() => {
-    getStockPrice(sectorSymbols)
+    getStockPrice(stockSymbols)
       .then((res) => {
         console.log(res.data);
-        const formattedStocksData = formatQuoteData(res.data);
-        setStocksData(formattedStocksData);
+
+        setStocksData(res.data);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -36,7 +41,7 @@ function Sectors() {
 
   return (
     <>
-      <h1>S&P 500 and Sector Momentum </h1>
+      <h1>{title}</h1>
 
       {/* Defensive programming logic to prevent variables 
     from being accessed before they have been properly initialized 
@@ -58,4 +63,4 @@ function Sectors() {
   );
 }
 
-export default Sectors;
+export default Sector;

@@ -1,89 +1,89 @@
 import "./Stockcard.scss";
 import { useEffect, useState } from "react";
 import { getStockTechnicalAlignment } from "../api/api";
+import { Link } from "react-router-dom";
 
 const StockCard = ({ stock }) => {
   const [indicatorData, setIndicatorData] = useState();
-  console.log(indicatorData)
-  console.log(stock)
+  console.log(indicatorData);
+  console.log(stock);
   const useApi = true;
 
   useEffect(() => {
     if (useApi) {
       getStockTechnicalAlignment(stock.symbol).then((data) => {
         console.log(data);
-        
-        const [ema8Day, ema13Day, ema21Day] = 
+
+        const [ema8Day, ema21Day, ppoData] = data;
+
+        // const [ema8Day, ema13Day, ema21Day] = // destructuring statement
         setIndicatorData({
+          // state 'setter'
           ema8Day: ema8Day.values[0],
-          ema13Day: ema13Day.values[0],
           ema21Day: ema21Day.values[0],
-          
+          ppoData: ppoData.values[0],
         });
-      
       });
     }
   }, []);
 
   const getCardStyle = () => {
+    const fastOverSlow = indicatorData.ema8Day.ema > indicatorData.ema21Day.ema;
+    const ppoAbove1 = indicatorData.ppoData.ppo > 1;
 
-  
+    let color = "";
+    if (fastOverSlow && ppoAbove1) {
+      color = "forestgreen";
+    } else if (!fastOverSlow && !ppoAbove1) {
+      color = "crimson";
+    } else {
+      color = "goldenrod";
+    }
 
-    const fastOverMedium = indicatorData.ema8Day.ema > indicatorData.ema13Day.ema;
-    const mediumOverSlow = indicatorData.ema13.ema > indicatorData.ema21day.ema;
-    const emaAlignment = fastOverMedium && mediumOverSlow;
-     
-    // const fastUnderMedium =  indicatorData.ema8Day.ema < indicatorData.ema13Day.ema;
-    // const mediumUnderSlow = indicatorData.ema13.ema < indicatorData.ema21day.ema;
-    // const emaNegativeAlignment = fastUnderMedium && mediumUnderSlow;
-
-    // const noAlighnment = emaAlignment || emaNegativeAlignment
-    
-      
-
-    let color = " ";
-    if (emaAlignment) {
-      color = "green";
-    } else{
-      color = "red";
-    } 
     const style = { backgroundColor: color };
-
     return style;
   };
 
+  const sectorLink = stock.symbol === "SPY" ?  "/" : `/sector/${stock.symbol}`;
+
   return (
     <>
-      <section id="test">
-        <div>
+      <div id="test">
+        <div id='test2'>
+        <Link to={sectorLink}>
           {indicatorData ? (
             <div id="sector_card" style={getCardStyle()}>
-              <div className="sector_name">{stock.name}</div>
+              <div className="stock_name">{stock.name}</div>
               <div>
-                <span className="sector_info">Symbol:</span>
-                {stock.symbol}
+                <span className="card_info">Symbol: </span>
+
+                <span className="sector_info">{stock.symbol}</span>
               </div>
               <div>
-                <span className="sector_name">Share Price:</span>{" "}
-                <span clasName="sector_info">{stock.close}</span>
+                <span className="card_info">Share Price: </span>
+                <span className="sector_info">{stock.close}</span>
               </div>
               <div>
-                <span className="sector_name">% Change:</span>
-                {"    "}
-                {stock.percent_change}
+                <span className="card_info"> % Change: </span>
+                <span className="sector_info"> {stock.percent_change}</span>
               </div>
               <div>
-                <span className="sector_name">10 Day Average:</span>
-                {"   "}
-                {indicatorData.ema10Day.ema}
+                <span className="card_info">8 Day Average: </span>
+                <span className="sector_name">
+                  {" "}
+                  <span className="sector_info">
+                    {" "}
+                    {indicatorData.ema8Day.ema}
+                  </span>
+                </span>
               </div>
-              {/* <div><MiniChart colorTheme="dark" width="100%"></MiniChart></div> */}
             </div>
           ) : (
             <div className="stockcard">loading...</div>
           )}
+        </Link>
         </div>
-      </section>
+      </div>
     </>
   );
 };

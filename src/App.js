@@ -11,6 +11,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 //Impoted Components
 import Header from "./components/Header/Header";
 import Sectors from "./components/Sectors/sectors";
+import Sector from "./components/Sector/sector";
 import About from "./components/About/About";
 import Watchlist from "./components/Watchlist/Watchlist";
 
@@ -35,9 +36,9 @@ function App() {
           <CssBaseline />
           <Header check={darkMode} change={() => setDarkMode(!darkMode)} />
           <Routes>
-            <Route path="/" element={<Sectors />} />
+            <Route path="/sector/:sectorSymbol" element={<Sector />} />
             <Route path="/about" element={<About />} />
-
+            <Route path="/" element={<Sectors />} />
             {/* <Route path="/watchlist" element={<Watchlist/>}/> */}
           </Routes>
         </BrowserRouter>

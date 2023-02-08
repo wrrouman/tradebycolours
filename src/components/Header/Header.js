@@ -12,6 +12,7 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { styled } from "@mui/material/styles";
 
+
 const styles = {
   symbols: [
     {
@@ -142,9 +143,9 @@ export default function Header({ check, change }) {
                     </Link>
                   </div>
                   <FormGroup>
-                    <FormControlLabel
+                    <FormControlLabel 
                       control={
-                        <MaterialUISwitch sx={{ m:1 }} defaultChecked />
+                        <MaterialUISwitch sx={{ m: 1 }} defaultChecked />
                       }
                       onChange={change}
                       checked={check}

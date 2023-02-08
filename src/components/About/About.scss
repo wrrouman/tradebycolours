@@ -2,8 +2,8 @@
 
 
 img {
-    width: 350px;
-    height: 300px;
+    width: 250px;
+    height: 200px;
     border-radius: 6px;  
 }
 img:hover{
@@ -19,6 +19,17 @@ img:hover{
     padding-right: 8px;
     justify-content: center;
    
+   
+.about-information{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    @media (min-width:767px) {
+        
+    
+    }
+}
+
 }
 
 .about_whatistbc{
@@ -26,7 +37,7 @@ img:hover{
     flex-direction: column;
     align-items: center;
     padding-top: 2rem;
-    width: 400px
+    width: 300px
     
 }
 
@@ -35,7 +46,7 @@ img:hover{
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    width: 400px
+    width: 300px
 }
 
 .about_pics{
