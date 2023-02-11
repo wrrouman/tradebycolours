@@ -33,7 +33,7 @@ const StockCard = ({ stock }) => {
 
     let color = "";
     if (fastOverSlow && ppoAbove1) {
-      color = "forestgreen";
+      color = "rgb(16, 194, 16";
     } else if (!fastOverSlow && !ppoAbove1) {
       color = "crimson";
     } else {
@@ -44,46 +44,46 @@ const StockCard = ({ stock }) => {
     return style;
   };
 
-  const sectorLink = stock.symbol === "SPY" ?  "/" : `/sector/${stock.symbol}`;
+  const sectorLink = stock.symbol === "SPY" ? "/" : `/sector/${stock.symbol}`;
 
   return (
     <>
-      <div id="test">
-        <div id='test2'>
-        <Link to={sectorLink}>
-          {indicatorData ? (
-            <div id="sector_card" style={getCardStyle()}>
-              <div className="stock_name">{stock.name}</div>
-              <div>
-                <span className="card_info">Symbol: </span>
+      <article>
+        <div id="test">
+          <Link to={sectorLink}>
+            {indicatorData ? (
+              <div id="sector_card" style={getCardStyle()}>
+                <div className="stock_name">{stock.name}</div>
+                <div>
+                  <span className="card_info">Symbol: </span>
 
-                <span className="sector_info">{stock.symbol}</span>
-              </div>
-              <div>
-                <span className="card_info">Share Price: </span>
-                <span className="sector_info">{stock.close}</span>
-              </div>
-              <div>
-                <span className="card_info"> % Change: </span>
-                <span className="sector_info"> {stock.percent_change}</span>
-              </div>
-              <div>
-                <span className="card_info">8 Day Average: </span>
-                <span className="sector_name">
-                  {" "}
-                  <span className="sector_info">
+                  <span className="sector_info">{stock.symbol}</span>
+                </div>
+                <div>
+                  <span className="card_info">Share Price: </span>
+                  <span className="sector_info">{stock.close}</span>
+                </div>
+                <div>
+                  <span className="card_info"> % Change: </span>
+                  <span className="sector_info"> {stock.percent_change}</span>
+                </div>
+                <div>
+                  <span className="card_info">8 Day Average: </span>
+                  <span className="sector_name">
                     {" "}
-                    {indicatorData.ema8Day.ema}
+                    <span className="sector_info">
+                      {" "}
+                      {indicatorData.ema8Day.ema}
+                    </span>
                   </span>
-                </span>
+                </div>
               </div>
-            </div>
-          ) : (
-            <div className="stockcard">loading...</div>
-          )}
-        </Link>
+            ) : (
+              <div className="stockcard">loading...</div>
+            )}
+          </Link>
         </div>
-      </div>
+      </article>
     </>
   );
 };

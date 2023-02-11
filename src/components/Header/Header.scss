@@ -1,13 +1,33 @@
 @use "../../styles/typography" as *;  
 
-
-    label{
-        margin: 0px;
+  
+    .options-container{
+        
+        @media(min-width: 767px){
+            display: none;
+           
+           }
     }
 
-    .heaer_controls-subcontainer{
+    .controls-container{
         display: flex;
-        gap: 1rem;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+       
+    }
+
+   
+
+    .heaer_controls-subcontainer{
+            display: none;
+        @media(min-width: 767px){
+            display: flex;
+            gap: 1rem;
+           
+           }
+
+        
     }
 
     .header_controls-container{
@@ -27,9 +47,9 @@
     align-items: center;
     height:155px;
     padding: 1rem;
-    gap: 1rem;
+    gap: .5rem;
     @media(min-width: 767px){
-        height: 100px;
+        height: 120px;
         flex-direction: row;
         justify-content: space-between;  
     }
@@ -53,15 +73,15 @@
          }
     }
     &_green{
-        color: #14A76C;
+        color: rgb(16, 194, 16);
         font-weight: 700;
     }
     &_yellow{
-        color: #F3D250;
+        color: goldenrod;
         font-weight: 700;
     }
     &_red{
-        color: red;
+        color: crimson;
         font-weight: 700;
     }
     &_logo-subheader{

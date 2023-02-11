@@ -45,14 +45,18 @@ function Sectors() {
       {/* if (stockData && stockData.length > 0) {
 
     } */}
+
       {stocksData ? (
-        <>
-          {/* markup for a parent container */}
-          {renderStockCards()}
-          {/* markup for a parent container */}
-        </>
+        <div className="sector-cardContainer">
+          {" "}
+          <>
+            {/* markup for a parent container */}
+            {renderStockCards()}
+            {/* markup for a parent container */}
+          </>
+        </div>
       ) : (
-        <p>Loading...</p>
+        <p className="sector-cardContainer">Loading...</p>
       )}
     </>
   );

@@ -3,7 +3,11 @@ import { React } from "react";
 import { useState, createContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Switch from "@mui/material/Switch";
+
+//Tradingview ticker banner
 import { TickerTape } from "react-ts-tradingview-widgets";
+
+//Dark mode components (Material UI)
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -12,6 +16,10 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { styled } from "@mui/material/styles";
 
+//Nav dashboard menu (Material UI)
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 
 const styles = {
   symbols: [
@@ -109,9 +117,16 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
-// const label = { inputProps: { "aria-label": "Switch demo" } };
-
 export default function Header({ check, change }) {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" className>
@@ -137,20 +152,56 @@ export default function Header({ check, change }) {
                 {/* Right side of the nave bar starts here*/}
                 <div className="header_controls-container">
                   <div className="heaer_controls-subcontainer">
+                    <Link to={"/"} id="link">
+                  <div className="header_about">Sectors</div>
+                  </Link>
                     <div className="header_watchlist">Watchlist</div>
                     <Link to={"/About"} id="link">
                       <div className="header_about">About</div>
                     </Link>
                   </div>
-                  <FormGroup>
-                    <FormControlLabel 
-                      control={
-                        <MaterialUISwitch sx={{ m: 1 }} defaultChecked />
-                      }
-                      onChange={change}
-                      checked={check}
-                    />
-                  </FormGroup>
+
+                  <div className="controls-container">
+                    <div className="options-container">
+                      <Button
+                        style={{ color: "white", fontSize: "18px", fontWeight: "500", padding: "0px" }}
+                        id="basic-button"
+                        aria-controls={open ? "basic-menu" : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={open ? "true" : undefined}
+                        onClick={handleClick}
+                      >
+                        Options
+                      </Button >
+                      <Menu
+                        id="basic-menu"
+                        anchorEl={anchorEl}
+                        open={open}
+                        onClose={handleClose}
+                        MenuListProps={{
+                          "aria-labelledby": "basic-button",
+                        }}
+                      >
+                        <Link  to={"/About"} style={{color:"inherit"}}>
+                        <MenuItem onClick={handleClose}>About</MenuItem>
+                        </Link>
+                        <Link to={"/"} style={{color:"inherit"}}>
+                        <MenuItem onClick={handleClose}>Sectors</MenuItem>
+                        </Link>
+                        <MenuItem onClick={handleClose}>Watchlist</MenuItem>
+                      </Menu>
+                    </div>
+                    <FormGroup style={{ margin: 0 }}>
+                      <FormControlLabel
+                        style={{ margin: 0 }}
+                        control={
+                          <MaterialUISwitch  sx={{ m: 1 }} defaultChecked />
+                        }
+                        onChange={change}
+                        checked={check}
+                      />
+                    </FormGroup>
+                  </div>
                 </div>
               </div>
             </section>
