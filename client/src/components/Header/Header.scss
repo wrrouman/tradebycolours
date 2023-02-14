@@ -1,0 +1,112 @@
+@use "../../styles/typography" as *;  
+
+  
+    .options-container{
+        
+        @media(min-width: 767px){
+            display: none;
+           
+           }
+    }
+
+    .controls-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+       
+    }
+
+   
+
+    .heaer_controls-subcontainer{
+            display: none;
+        @media(min-width: 767px){
+            display: flex;
+            gap: 1rem;
+           
+           }
+
+        
+    }
+
+    .header_controls-container{
+        display: flex;
+        flex-direction: column;
+        @media(min-width: 767px){
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 1rem;  
+           }
+    }
+
+    .header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height:155px;
+    padding: 1rem;
+    gap: .5rem;
+    @media(min-width: 767px){
+        height: 120px;
+        flex-direction: row;
+        justify-content: space-between;  
+    }
+     &_logo-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        @media(min-width: 767px){
+            
+             }
+    }
+    &_logo{
+        font-size: 28px;
+        line-height: normal;
+        display: flex;
+        flex-direction: column;
+       align-items: center;
+
+    @media(min-width: 767px){
+        font-size: 30px;
+         }
+    }
+    &_green{
+        color: rgb(16, 194, 16);
+        font-weight: 700;
+    }
+    &_yellow{
+        color: goldenrod;
+        font-weight: 700;
+    }
+    &_red{
+        color: crimson;
+        font-weight: 700;
+    }
+    &_logo-subheader{
+        font-size: 12px;
+        font-weight: 500;
+        color: white;
+        @media(min-width: 767px){
+            font-size: 16px;
+             }
+    }
+    &_watchlist{
+        font-size: 14px;
+        font-weight: 500;
+    @media(min-width: 767px){
+        font-size: 18px;
+        }
+    } 
+    &_about{
+        font-size: 14px;
+        font-weight: 500; 
+        color: white;
+    @media(min-width: 767px){
+        font-size: 18px;
+        }
+    }
+   
+
+}
