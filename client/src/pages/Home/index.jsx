@@ -10,7 +10,7 @@ function Home(userDetails) {
 			<h1 className={styles.heading}>Home</h1>
 			<div className={styles.form_container}>
 				<div className={styles.left}>
-					<img className={styles.img} src="./images/profile.jpg" alt="login" />
+					{/* <img className={styles.img} src="./images/profile.jpg" alt="login" /> */}
 				</div>
 				<div className={styles.right}>
 					<h2 className={styles.from_heading}>Profile</h2>

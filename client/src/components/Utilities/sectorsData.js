@@ -1,4 +1,4 @@
-// const sectors = "SPY, XLK, XLV, XLF,";
+
 
 const sectors = {
   SPY: {
@@ -30,17 +30,21 @@ const sectors = {
     stockSymbols: "RTX, HON, UPS, CAT, BA, DE, LMT, GE, MMM, FDX, WM, JCI",
   },
 
-  XLE:{
-
+  XLE: {
+    title: "Energy Select Sector",
+    stockSymbols: "XOM, CVX, SLB, EOG, COP, VLO, PXD, OXY, MPC, HAL, DVN, FANG",
   },
 
   XLY: {
-
+    title: "Consumer Discretionary",
+    stockSymbols:
+      "AMZN, TSLA, HD, NKE, MCD, LOW, SBUX, BKNG, TJX, TGT, CMG, F",
   },
 
-  XLP:{
-    
-  }
+  XLP: {
+    Title: "Consumer Staples",
+    stockSymbols: "PG, PEP, KO, COST, PM, WMT, MDLZ, MO, CL, EL, ",
+  },
 };
 
 const sectorSymbols = Object.keys(sectors).join(", ");

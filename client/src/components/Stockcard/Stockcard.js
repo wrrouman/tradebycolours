@@ -1,6 +1,6 @@
 import "./Stockcard.scss";
 import { useEffect, useState } from "react";
-import { getStockTechnicalAlignment } from "../api/api";
+import { getStockTechnicalAlignment, shortTermlAlignment } from "../api/api";
 import { Link } from "react-router-dom";
 
 const StockCard = ({ stock }) => {
@@ -8,6 +8,20 @@ const StockCard = ({ stock }) => {
   console.log(indicatorData);
   console.log(stock);
   const useApi = true;
+
+//short term data
+
+useEffect(() => {
+
+
+  if (useApi){
+    shortTermlAlignment(stock.symbol).then((data) => {
+      console.log(data);
+    })
+  }
+})
+
+
 
   useEffect(() => {
     if (useApi) {

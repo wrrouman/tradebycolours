@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getStockPrice} from "../../components/api/api";
+import { getStockPrice } from "../../components/api/api";
 import { useState, useEffect } from "react";
 import StockCard from "../Stockcard/Stockcard";
 import { sectors } from "../Utilities/sectorsData";
@@ -10,7 +10,6 @@ function Sector() {
   const { title, stockSymbols } = sectors[sectorSymbol];
 
   const [stocksData, setStocksData] = useState();
-
 
   // Origional API call returning an OBJECT for ticker symbols
   useEffect(() => {
@@ -51,11 +50,11 @@ function Sector() {
 
     } */}
       {stocksData ? (
-        <>
+        <div className="cards-parent">
           {/* markup for a parent container */}
           {renderStockCards()}
           {/* markup for a parent container */}
-        </>
+        </div>
       ) : (
         <p>Loading...</p>
       )}

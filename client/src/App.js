@@ -2,8 +2,6 @@
 import axios from "axios";
 import "./App.css";
 import * as React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchUser } from "./store/slice/user";
 import { createContext, useState, useEffect } from "react";
 import { ThemeContext } from "./components/Header/Header";
 import { Routes, Route, Navigate } from "react-router-dom";
@@ -29,27 +27,22 @@ const interval = "1day";
 const url = `https://api.twelvedata.com/time_series?symbol=${symbol}&interval=${interval}&apikey=${apiKey}`;
 
 function App() {
-  // const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null);
 
-  // const getUser = async () => {
-  //   try {
-  //     const url = `${process.env.REACT_APP_API_URL}/auth/login/success`;
-  //     const { data } = await axios.get(url, { withCredentials: true });
-  //     setUser(data.user._json);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+  const getUser = async () => {
+    try {
+      const url = `${process.env.REACT_APP_API_URL}/auth/login/success`;
+      const { data } = await axios.get(url, { withCredentials: true });
 
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state)
-  console.log("CALL", user);
+      setUser(data.user._json);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
-    dispatch(fetchUser()).then((x) => {
-      console.log(x);
-    });
-  }, [dispatch]);
+    getUser();
+  }, []);
 
   const [darkMode, setDarkMode] = useState(false);
   const darkTheme = createTheme({
@@ -63,29 +56,31 @@ function App() {
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
         <Header check={darkMode} change={() => setDarkMode(!darkMode)} />
-        <Routes>
-          {/* <div className="container">
-            <Route
-              exact
-              path="/"
-              element={user ? <Home user={user} /> : <Navigate to="/login" />}
-            />
-            <Route
-              exact
-              path="/login"
-              element={user ? <Navigate to="/" /> : <Login />}
-            />
-            <Route
-              path="/signup"
-              element={user ? <Navigate to="/" /> : <Signup />}
-            />
-          </div> */}
-
+        <div id="app">
+        <Routes >
+        
+          <Route className="routes-container"
+            exact
+            path="/"
+            element={user ? <Sectors /> : <Navigate to="/login" />}
+          />
+          <Route
+            exact
+            path="/login"
+            element={user ? <Navigate to="/" /> : <Login />}
+          />
+          <Route
+            path="/signup"
+            element={user ? <Navigate to="/" /> : <Signup />}
+          />
+         
           <Route path="/sector/:sectorSymbol" element={<Sector />} />
           <Route path="/about" element={<About />} />
-          <Route path="/" element={<Sectors />} />
-          {/* <Route path="/watchlist" element={<Watchlist/>}/> */}
+          <Route path="/sectors" element={<Sectors />} />
+          {/* <Route path="/watchlist" element={<Watchlist />} /> */}
+         
         </Routes>
+        </div>
       </ThemeProvider>
     </>
   );

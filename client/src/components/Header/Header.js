@@ -20,7 +20,9 @@ import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import Stack from "@mui/material/Stack";
 
+//Ticker banner symbols
 const styles = {
   symbols: [
     {
@@ -118,6 +120,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 
 export default function Header({ check, change }) {
+  //front end authorization code
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -127,9 +130,16 @@ export default function Header({ check, change }) {
     setAnchorEl(null);
   };
 
+  //logout function
+  const handleLogout = () => {
+    window.open(`${process.env.REACT_APP_API_URL}/auth/logout`, "_self");
+    setAnchorEl(null);
+  };
+
   return (
+    //App bar from Material UI
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" className>
+      <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <section>
@@ -153,18 +163,38 @@ export default function Header({ check, change }) {
                 <div className="header_controls-container">
                   <div className="heaer_controls-subcontainer">
                     <Link to={"/"} id="link">
-                  <div className="header_about">Sectors</div>
-                  </Link>
-                    <div className="header_watchlist">Watchlist</div>
-                    <Link to={"/About"} id="link">
-                      <div className="header_about">About</div>
+                      <div className="header_about">SECTORS</div>
                     </Link>
+                    <div className="header_watchlist">WATCHLIST</div>
+                    <Link to={"/About"} id="link">
+                      <div className="header_about">ABOUT</div>
+                    </Link>
+
+                    {/* Logout Button */}
+                    <Button
+                      onClick={handleLogout}
+                      style={{
+                        color: "white",
+                        padding: 0,
+                        margin: 0,
+                        fontFamily: "poppins",
+                        fontSize: 14,
+                      }}
+                      variant="text"
+                    >
+                      Logout
+                    </Button>
                   </div>
 
                   <div className="controls-container">
                     <div className="options-container">
                       <Button
-                        style={{ color: "white", fontSize: "18px", fontWeight: "500", padding: "0px" }}
+                        style={{
+                          color: "white",
+                          fontSize: "18px",
+                          fontWeight: "500",
+                          padding: "0px",
+                        }}
                         id="basic-button"
                         aria-controls={open ? "basic-menu" : undefined}
                         aria-haspopup="true"
@@ -172,7 +202,9 @@ export default function Header({ check, change }) {
                         onClick={handleClick}
                       >
                         Options
-                      </Button >
+                      </Button>
+
+                      {/* Mobile mode option menu and logout button */}
                       <Menu
                         id="basic-menu"
                         anchorEl={anchorEl}
@@ -182,20 +214,23 @@ export default function Header({ check, change }) {
                           "aria-labelledby": "basic-button",
                         }}
                       >
-                        <Link  to={"/About"} style={{color:"inherit"}}>
-                        <MenuItem onClick={handleClose}>About</MenuItem>
+                        <Link to={"/About"} style={{ color: "inherit" }}>
+                          <MenuItem onClick={handleClose}>About</MenuItem>
                         </Link>
-                        <Link to={"/"} style={{color:"inherit"}}>
-                        <MenuItem onClick={handleClose}>Sectors</MenuItem>
+                        <Link to={"/"} style={{ color: "inherit" }}>
+                          <MenuItem onClick={handleClose}>Sectors</MenuItem>
                         </Link>
                         <MenuItem onClick={handleClose}>Watchlist</MenuItem>
+                        <MenuItem onClick={handleLogout}>Logout</MenuItem>
                       </Menu>
                     </div>
+
+                    {/* Dark mode switch */}
                     <FormGroup style={{ margin: 0 }}>
                       <FormControlLabel
                         style={{ margin: 0 }}
                         control={
-                          <MaterialUISwitch  sx={{ m: 1 }} defaultChecked />
+                          <MaterialUISwitch sx={{ m: 1 }} defaultChecked />
                         }
                         onChange={change}
                         checked={check}
@@ -216,5 +251,3 @@ export default function Header({ check, change }) {
     </Box>
   );
 }
-
-// export default Header;

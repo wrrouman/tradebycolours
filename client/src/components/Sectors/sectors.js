@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import StockCard from "../Stockcard/Stockcard";
 import { sectorSymbols } from "../Utilities/sectorsData";
 import { formatQuoteData } from "../Utilities/toolBelt";
+import "./sectors.scss";
 
 function Sectors() {
   const [stocksData, setStocksData] = useState();
@@ -49,11 +50,11 @@ function Sectors() {
       {stocksData ? (
         <div className="sector-cardContainer">
           {" "}
-          <>
+          <div className="cards-parent">
             {/* markup for a parent container */}
             {renderStockCards()}
             {/* markup for a parent container */}
-          </>
+          </div>
         </div>
       ) : (
         <p className="sector-cardContainer">Loading...</p>
