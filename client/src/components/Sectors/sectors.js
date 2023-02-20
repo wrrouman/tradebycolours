@@ -16,7 +16,7 @@ function Sectors() {
         const formattedStocksData = formatQuoteData(res.data);
         setStocksData(formattedStocksData);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.error(error));
   }, []);
 
   const renderStockCards = () => {

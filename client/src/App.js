@@ -36,7 +36,7 @@ function App() {
 
       setUser(data.user._json);
     } catch (err) {
-      console.log(err);
+      console.error(err)
     }
   };
 
@@ -77,7 +77,7 @@ function App() {
           <Route path="/sector/:sectorSymbol" element={<Sector />} />
           <Route path="/about" element={<About />} />
           <Route path="/sectors" element={<Sectors />} />
-          {/* <Route path="/watchlist" element={<Watchlist />} /> */}
+          <Route path="/watchlist" element={<Watchlist user={user} />} />
          
         </Routes>
         </div>

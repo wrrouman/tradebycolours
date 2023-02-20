@@ -15,11 +15,10 @@ function Sector() {
   useEffect(() => {
     getStockPrice(stockSymbols)
       .then((res) => {
-        console.log(res.data);
 
         setStocksData(res.data);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.error(error));
   }, []);
 
   const renderStockCards = () => {

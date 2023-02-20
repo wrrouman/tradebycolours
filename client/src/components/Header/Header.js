@@ -165,7 +165,9 @@ export default function Header({ check, change }) {
                     <Link to={"/"} id="link">
                       <div className="header_about">SECTORS</div>
                     </Link>
-                    <div className="header_watchlist">WATCHLIST</div>
+                    <Link to={"/watchlist"} id="link">
+                      <div className="header_watchlist">WATCHLIST</div>
+                    </Link>
                     <Link to={"/About"} id="link">
                       <div className="header_about">ABOUT</div>
                     </Link>

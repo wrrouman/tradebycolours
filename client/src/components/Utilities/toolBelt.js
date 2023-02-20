@@ -19,4 +19,60 @@ const formatQuoteData = (quotesObject) => {
   return formattedQuotesObject;
 };
 
-export { formatQuoteData };
+const momentumStatuses = {
+  POSITIVE: "POSITIVE",
+  NEUTRAL: "NEUTRAL",
+  NEGATIVE: "NEGATIVE",
+};
+
+const getIndicatorMomentum = (ema8Day, ema21Day, ppoData) => {
+  const fastOverSlow = ema8Day.ema > ema21Day.ema;
+  const ppoAbove1 = ppoData.ppo > 1;
+
+  let momentumStatus = "";
+  if (fastOverSlow && ppoAbove1) {
+    // "positive" momentum
+    momentumStatus = momentumStatuses.POSITIVE;
+  } else if (!fastOverSlow && !ppoAbove1) {
+    // "negative" momentum
+    momentumStatus = momentumStatuses.NEGATIVE;
+  } else {
+    // fastOverSlow && !ppoAbove1 OR !fastOverSlow && ppoAbove1
+    // "neutral" momentum
+    momentumStatus = momentumStatuses.NEUTRAL;
+  }
+
+  return momentumStatus;
+};
+
+// localStorage API stuff
+// DOCS: https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
+
+const getWatchListFromLocalStorage = (key) => {
+  // watchlist will be an array of stock symbols ['SPY', 'AAPL'].. etc.
+  // when we SAVE a javascript array to local storage, it gets crunched down
+  // into a comma separated string
+  // ['SPY', 'AAPL'] => "SPY, AAPL"
+  // that's why we have to use .split(',') to get it to turn back into an array
+  const localStorageData = localStorage.getItem(key);
+  if (localStorageData === null) {
+    return [];
+  }
+  // assuming at this point we have SOMETHING
+  // we can split that value based on commas, and return that array
+  const localStorageDataArray = localStorageData.split(",");
+
+  return localStorageDataArray;
+};
+
+const setWatchListToLocalStorage = (key, value) => {
+  localStorage.setItem(key, value);
+};
+
+export {
+  formatQuoteData,
+  getIndicatorMomentum,
+  momentumStatuses,
+  getWatchListFromLocalStorage,
+  setWatchListToLocalStorage,
+};
