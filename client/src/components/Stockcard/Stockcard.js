@@ -11,7 +11,6 @@ const StockCard = ({ stock }) => {
   useEffect(() => {
     if (useApi) {
       getStockTechnicalAlignment(stock.symbol).then((data) => {
-
         const [
           ema8Day,
           ema8Day2Hour,
@@ -75,20 +74,25 @@ const StockCard = ({ stock }) => {
 
     const { POSITIVE, NEGATIVE, NEUTRAL } = momentumStatuses;
 
-    let chartEmoji = "";
+    let color2 = "";
 
     switch (momentumStatus) {
       case POSITIVE:
-        chartEmoji = "📈";
+        color2 = "green";
+        // chartEmoji = "📈";
         break;
       case NEUTRAL:
-        chartEmoji = "🤷";
+        color2 = "goldenrod";
+        // color = "🤷";
         break;
       case NEGATIVE:
-        chartEmoji = "📉";
+        color2 = "crimson";
+        // chartEmoji = "📉";
         break;
     }
-    return chartEmoji;
+    const momentumStyle = { backgroundColor: color2 };
+    return momentumStyle;
+    // return chartEmoji;
   };
 
   const sectorLink = stock.symbol === "SPY" ? "/" : `/sector/${stock.symbol}`;
@@ -124,10 +128,12 @@ const StockCard = ({ stock }) => {
                     </span>
                   </span>
                 </div>
-                {/* this is a possible location for the mini indicator data */}
-                <div>
-                  <span className="card_info"> Short Term Momentum: </span>
-                  <span className="sector_info"> {getShortTermEmoji()}</span>
+                <div className="short-term-momentum_container">
+                  <span className="card_info"> Short-Term Momentum: </span>
+                  <div
+                    className="short-term-momentum"
+                    style={getShortTermEmoji()}
+                  ></div>
                 </div>
               </div>
             ) : (

@@ -222,7 +222,9 @@ export default function Header({ check, change }) {
                         <Link to={"/"} style={{ color: "inherit" }}>
                           <MenuItem onClick={handleClose}>Sectors</MenuItem>
                         </Link>
-                        <MenuItem onClick={handleClose}>Watchlist</MenuItem>
+                        <Link to={"/Watchlist"} style={{ color: "inherit" }}>
+                          <MenuItem onClick={handleClose}>Watchlist</MenuItem>
+                        </Link>
                         <MenuItem onClick={handleLogout}>Logout</MenuItem>
                       </Menu>
                     </div>
