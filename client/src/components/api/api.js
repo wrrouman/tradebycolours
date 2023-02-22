@@ -57,38 +57,10 @@ const getStockTechnicalAlignment = (symbol, interval = "1day") => {
   ]);
 };
 
-//short term momentum api calls
-
-const shortTermEMA = (symbol, interval = "2h") => {
-  const shortEMAQuery = `https://api.twelvedata.com/ema?symbol=${symbol}&interval=${interval}&apikey=${apiKey}`;
-  return axios.get(shortEMAQuery);
-};
-
-const shortTermPPO = (symbol, interval = "2h") => {
-  const shortPPOQuery = `https://api.twelvedata.com/ppo?symbol=${symbol}&interval=${interval}&apikey=${apiKey}`;
-  return axios.get(shortPPOQuery);
-};
-
-const shortTermlAlignment = (symbol, interval = "2h") => {
-  const shortTerm8EMA = shortTermEMA(symbol, "8", interval).then(
-    (response) => response.data
-  );
-
-  const shortTerm21EMA = shortTermEMA(symbol, "21", interval).then(
-    (response) => response.data
-  );
-
-  const shortPPOData = shortTermPPO(symbol, interval).then((response) => {
-    return response.data;
-  });
-
-  return Promise.all([shortTerm8EMA, shortTerm21EMA, shortPPOData]);
-};
 
 export {
   getStockPrice,
   getStockTechnicalAlignment,
   getStockPPO,
-  shortTermlAlignment,
   getStocks
 };

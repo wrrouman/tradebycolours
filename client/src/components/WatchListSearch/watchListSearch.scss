@@ -1,0 +1,28 @@
+.watchlist_button {
+    background-color: #1976d2;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-family: poppins;
+    font-weight: 500;
+    font-size: 14px;
+    width: 80px;
+    height: 30px;
+    padding: 5px;
+
+}
+
+.watch-list-add{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.watchlist-search{
+    border: 1px solid black;
+    font-family: poppins;
+    border-radius: 8px;
+    padding-left: 10px;
+    width: 11rem;
+    height: 30px;
+}

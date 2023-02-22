@@ -1,4 +1,7 @@
 import { useState } from "react";
+import "./watchListSearch.scss"; 
+
+
 
 function WatchListSearch({ addToWatchList, stockSymbols }) {
   const [status, setStatus] = useState({type: "", message: ""});
@@ -22,19 +25,20 @@ function WatchListSearch({ addToWatchList, stockSymbols }) {
   };
 
   return (
-    <div>
+    <div >
+      <h1>Watchlist</h1>
       {stockSymbols ? (
         <div>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="watch-list-add">
             <input
               list="watchstocklist"
               className="watchlist-search"
               name="watchlist-search"
               type="text"
-              placeholder="enter a stock symbol..."
+              placeholder="Enter a stock symbol..."
             />
             <datalist id="watchstocklist">{renderSymbolOptions()}</datalist>
-            <button type="submit">ADD</button>
+            <button className="watchlist_button" type="submit">ADD</button>
             {status && <p className={status.type}>{status.message}</p>}
           </form>
         </div>

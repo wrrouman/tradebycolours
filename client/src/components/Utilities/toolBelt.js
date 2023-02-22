@@ -19,6 +19,9 @@ const formatQuoteData = (quotesObject) => {
   return formattedQuotesObject;
 };
 
+
+//color coding logic
+
 const momentumStatuses = {
   POSITIVE: "POSITIVE",
   NEUTRAL: "NEUTRAL",
@@ -50,16 +53,16 @@ const getIndicatorMomentum = (ema8Day, ema21Day, ppoData) => {
 
 const getWatchListFromLocalStorage = (key) => {
   // watchlist will be an array of stock symbols ['SPY', 'AAPL'].. etc.
-  // when we SAVE a javascript array to local storage, it gets crunched down
+  // when SAVING a javascript array to local storage, it gets crunched down
   // into a comma separated string
   // ['SPY', 'AAPL'] => "SPY, AAPL"
-  // that's why we have to use .split(',') to get it to turn back into an array
+  // use .split(',') to get it to turn back into an array
   const localStorageData = localStorage.getItem(key);
   if (localStorageData === null) {
     return [];
   }
-  // assuming at this point we have SOMETHING
-  // we can split that value based on commas, and return that array
+  // assuming at this point there is SOMETHING
+  // Can split that value based on commas, and return that array
   const localStorageDataArray = localStorageData.split(",");
 
   return localStorageDataArray;

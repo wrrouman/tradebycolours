@@ -1,8 +1,8 @@
-import axios from "axios";
-import { getStockPrice,stockLogo } from "../../components/api/api";
-import { createContext, useState, useEffect } from "react";
-import StockCard from "../Stockcard/Stockcard";
-import {sectorSymbols} from "../Utilities/sectorsData";
+
+// import { getStockPrice,stockLogo } from "../../components/api/api";
+// import { useState, useEffect } from "react";
+// import StockCard from "../Stockcard/Stockcard";
+// import {sectorSymbols} from "../Utilities/sectorsData";
 
 
 
@@ -10,18 +10,6 @@ function Sectors() {
 
 
   const [stocksData, setStocksData] = useState();
-
-  // const [logo, setlogo] = useState();
-  
-  //logo call (Need to figue out how to batch call)
-  // useEffect(() => {
-  //   stockLogo()
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       // setlogo(res.data);
-  //     })
-  //     .catch((error) => console.log(error));
-  // }, []);
 
 
   // Origional API call returning an OBJECT for ticker symbols

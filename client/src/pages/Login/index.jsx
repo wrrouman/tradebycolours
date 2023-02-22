@@ -14,7 +14,7 @@ function Login() {
 			<div className={styles.form_container}>
 				
 				<div className={styles.right}>
-					<h2 className={styles.from_heading}>Members Log in</h2>
+					<h2 className={styles.from_heading}>Log in</h2>
 					<input type="text" className={styles.input} placeholder="Email" />
 					<input type="text" className={styles.input} placeholder="Password" />
 					<button className={styles.btn}>Log In</button>

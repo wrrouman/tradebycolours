@@ -79,20 +79,20 @@ const StockCard = ({ stock }) => {
     switch (momentumStatus) {
       case POSITIVE:
         color2 = "green";
-        // chartEmoji = "📈";
+
         break;
       case NEUTRAL:
         color2 = "goldenrod";
-        // color = "🤷";
+
         break;
       case NEGATIVE:
         color2 = "crimson";
-        // chartEmoji = "📉";
+
         break;
     }
     const momentumStyle = { backgroundColor: color2 };
     return momentumStyle;
-    // return chartEmoji;
+   
   };
 
   const sectorLink = stock.symbol === "SPY" ? "/" : `/sector/${stock.symbol}`;
@@ -100,7 +100,7 @@ const StockCard = ({ stock }) => {
   return (
     <>
       <article>
-        <div id="test">
+        <div id="stockcard_container">
           <Link to={sectorLink}>
             {indicatorData ? (
               <div id="sector_card" style={getCardStyle()}>
@@ -129,7 +129,7 @@ const StockCard = ({ stock }) => {
                   </span>
                 </div>
                 <div className="short-term-momentum_container">
-                  <span className="card_info"> Short-Term Momentum: </span>
+                  <span className="card_info"> Entry & Exit Signal: </span>
                   <div
                     className="short-term-momentum"
                     style={getShortTermEmoji()}

@@ -17,24 +17,38 @@ function About() {
       <div className="about">
         <div className="about-information">
           <div className="about_whatistbc">
-            <h2>What is Trade By Colors</h2>
+            <h3>What is Trade By Colors</h3>
             <p>
               Trade By Colors is designed to help retail traders and investors
               easily identify the stocks and sectors in the market with the most
               momentum. Using our indicatoes, we help traders stay onthe right
               side of momentum to capture the big impulses and moves.
             </p>
+            <h6>Freeport Long Signal</h6>
+            <img src={FCX_daily} alt="FCX" />
+            <h6>TSLA Short Signal</h6>
+            <img src={TSLA_daily} alt="FCX" />
+            <h6>NVDA long and hhort signal</h6>
+            <img src={NVDA_daily} alt="FCX" />
           </div>
           <div className="about_method">
             <h3>Signal Method</h3>
             <p>
-              Signals are calulated on the the closing price of each day. If the
-              fast EMA has a higher value than the slow EMA, and the PPO is
-              above one, a positive signal will be fired. If the Fast EMA has a
-              lower value than the slow EMA, and the PPO is below 1, a negatve
+              Daily signals are calulated on the the closing price of each day.
+              If the fast EMA has a higher value than the slow EMA, and the PPO
+              is above one, a positive signal will be fired. If the Fast EMA has
+              a lower value than the slow EMA, and the PPO is below 1, a negatve
               signal will be fired. If the PPO and the EMA's are not in
               alighnment, a neutral condional will be displayed.
             </p>
+            <h6>Netflix Daily Momentum Signal </h6>
+            <img src={NFLX_daily} alt="NFLX" />
+            <p>
+              The short term entry and exit signal are calculated with the same
+              data every two hours to provide tactical entries and exits.
+            </p>
+            <h6>Tesla short term signal </h6>
+            <img src={TSLA_2hr} alt="FCX" />
           </div>
           <div className="about_method">
             <h3>What data do we use?</h3>
@@ -44,7 +58,7 @@ function About() {
             </p>
             <h5>Fast EMA</h5>
             <p>
-              The 10 Period Exponential Moving Average - An exponential moving
+              The 8 Period Exponential Moving Average - An exponential moving
               average is a type of moving average that places a greater weight
               and significance on the most recent data points.
             </p>
@@ -62,22 +76,8 @@ function About() {
               to indicate an uptrend, as the short-term EMA is above the
               longer-term EMA.
             </p>
-          </div>
-         
-        
-
-        <div className="about_pics">
-          <div>
-            <h4>Real World Example</h4>
-          </div>
-          <img src={FCX_daily} alt="FCX" />
-          <img src={FSLR_daily} alt="FCX" />
-          <img src={NFLX_daily} alt="FCX" />
-          {/* <img src={NVDA_daily} alt="FCX" />
-          <img src={QQQ_daily} alt="FCX" />
-          <img src={TSLA_daily} alt="FCX" />
-          <img src={META_4hr} alt="FCX" />
-          <img src={TSLA_2hr} alt="FCX" /> */}
+            <h6>First Solar Long Signal</h6>
+            <img src={FSLR_daily} alt="FCX" />
           </div>
         </div>
       </div>
