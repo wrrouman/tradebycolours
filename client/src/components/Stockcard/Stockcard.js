@@ -4,7 +4,11 @@ import { getStockTechnicalAlignment, shortTermlAlignment } from "../api/api";
 import { getIndicatorMomentum, momentumStatuses } from "../Utilities/toolBelt";
 import { Link } from "react-router-dom";
 
-const StockCard = ({ stock }) => {
+const StockCard = ({
+  stock,
+  isSector = false,
+  deleteFromWatchList = false,
+}) => {
   const [indicatorData, setIndicatorData] = useState();
   const useApi = true;
 
@@ -92,10 +96,13 @@ const StockCard = ({ stock }) => {
     }
     const momentumStyle = { backgroundColor: color2 };
     return momentumStyle;
-   
   };
-
-  const sectorLink = stock.symbol === "SPY" ? "/" : `/sector/${stock.symbol}`;
+  let sectorLink;
+  if (isSector) {
+    sectorLink = stock.symbol === "SPY" ? "/" : `/sector/${stock.symbol}`;
+  } else {
+    sectorLink = "#";
+  }
 
   return (
     <>
@@ -104,6 +111,11 @@ const StockCard = ({ stock }) => {
           <Link to={sectorLink}>
             {indicatorData ? (
               <div id="sector_card" style={getCardStyle()}>
+                {deleteFromWatchList && (
+                  <button onClick={() => deleteFromWatchList(stock.symbol)}>
+                    ❌
+                  </button>
+                )}
                 <div className="stock_name">{stock.name}</div>
                 <div>
                   <span className="card_info">Symbol: </span>

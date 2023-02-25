@@ -8,7 +8,7 @@ const sectors = {
   XLK: {
     title: "Technology Select Sector Fund",
     stockSymbols:
-      "AAPL, MSFT, ADBE, CSCO, NVDA, CRM, V, QCOM, AMD, INTC, AMZN  ",
+      "AAPL, MSFT, ADBE, NFLX, CSCO, NVDA, CRM, V, QCOM, AMD, INTC, AMZN  ",
   },
   XLV: {
     title: "Health Care Select Sector Fund",

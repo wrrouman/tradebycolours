@@ -27,7 +27,7 @@ function Sectors() {
     for (let stockKey in stocksData) {
       const stockData = stocksData[stockKey];
       // for each stock Object, push a StockCard component into the array
-      stockCards.push(<StockCard key={stockData.name} stock={stockData} />);
+      stockCards.push(<StockCard key={stockData.name} stock={stockData} isSector={true} />);
       // passing in the stock object as props
     }
 

@@ -3,7 +3,7 @@ import axios from "axios";
 const apiKey = "0f94898a0e174bf3ab5fe7600a1ba572";
 
 function getStocks() {
-  const stockSymbols = `https://api.twelvedata.com/stocks?country="United States"`
+  const stockSymbols = `https://api.twelvedata.com/stocks?country="United States"`;
   return axios.get(stockSymbols);
 }
 
@@ -57,10 +57,4 @@ const getStockTechnicalAlignment = (symbol, interval = "1day") => {
   ]);
 };
 
-
-export {
-  getStockPrice,
-  getStockTechnicalAlignment,
-  getStockPPO,
-  getStocks
-};
+export { getStockPrice, getStockTechnicalAlignment, getStockPPO, getStocks };
