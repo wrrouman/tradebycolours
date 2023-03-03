@@ -1,5 +1,24 @@
 const router = require("express").Router();
 const passport = require("passport");
+var request = require("request");
+const { AuthenticationClient } = require("auth0");
+
+router.get("/login/auth0/get-access-token", (req, res) => {
+  var options = {
+    method: "POST",
+    url: "https://dev-g87patwvksep0xn4.us.auth0.com/oauth/token",
+    headers: { "content-type": "application/json" },
+    body: '{"client_id":"LGYPXXaNBL2JrADGgSzG0CVhD9u5BKRg","client_secret":"bD3xK6yhomtb6NjJQz_c_GZzXNHvSdfPYxccsw-r9mB6YngrJwXtBDUDGy5XSh4l","audience":"https://dev-g87patwvksep0xn4.us.auth0.com/api/v2/","grant_type":"client_credentials"}',
+  };
+
+  request(options, function (error, response, body) {
+    if (error) throw new Error(error);
+
+    res.send(JSON.parse(body));
+  });
+});
+
+router.get("/login/auth0", (req, res) => {});
 
 router.get("/login/success", (req, res) => {
   if (req.user) {

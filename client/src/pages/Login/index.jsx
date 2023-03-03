@@ -8,6 +8,11 @@ function Login() {
 			"_self"
 		);
 	};
+
+	const onLoginClick = () => {
+		alert("Login clicked")
+	}
+
 	return (
 		<div className={styles.container}>
 			<h1 className={styles.heading}>Log in Form</h1>
@@ -17,7 +22,7 @@ function Login() {
 					<h2 className={styles.from_heading}>Log in</h2>
 					<input type="text" className={styles.input} placeholder="Email" />
 					<input type="text" className={styles.input} placeholder="Password" />
-					<button className={styles.btn}>Log In</button>
+					<button className={styles.btn} onClick={onLoginClick}>Log In</button>
 					<p className={styles.text}>or</p>
 					<button className={styles.google_btn} onClick={googleAuth}>
 						<img src="./images/google.png" alt="google icon" />
