@@ -21,7 +21,7 @@ function LoginAuth0() {
 
 	return (
 		<div className={styles.container}>
-			<h1 className={styles.heading}>Login in with redirect</h1>
+			<h1 className={styles.heading}>Welcome to TradeByColors</h1>
 			<div className={styles.form_container}>
 				
 				<div className={styles.right}>

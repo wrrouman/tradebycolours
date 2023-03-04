@@ -98,7 +98,7 @@ function App() {
               <Route path="/sector/:sectorSymbol" element={<Sector />} />
               <Route path="/about" element={<About />} />
               <Route path="/sectors" element={<Sectors />} />
-              <Route path="/watchlist" element={<Watchlist user={user} />} />
+              <Route path="/watchlist" element={<Watchlist  user={user || userAuth0}/>} />
             </Routes>
           )}
         </div>
