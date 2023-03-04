@@ -137,7 +137,9 @@ export default function Header({ check, change, user: userGoogle }) {
   //logout function
   const handleLogout = () => {
     if (userAuth0) {
-      logout();
+      logout({
+        returnTo: window.location.origin,
+      });
     } else if (userGoogle) {
       window.open(`${process.env.REACT_APP_API_URL}/auth/logout`, "_self");
     }
@@ -181,19 +183,21 @@ export default function Header({ check, change, user: userGoogle }) {
                     </Link>
                     {/* Logout Button */}
                     {/* If user is logged in using auth0 or google, show logout button, otherwise hide it */}
-                    {(userAuth0 || userGoogle) && <Button
-                      onClick={handleLogout}
-                      style={{
-                        color: "white",
-                        padding: 0,
-                        margin: 0,
-                        fontFamily: "poppins",
-                        fontSize: 14,
-                      }}
-                      variant="text"
-                    >
-                      Logout
-                    </Button>}
+                    {(userAuth0 || userGoogle) && (
+                      <Button
+                        onClick={handleLogout}
+                        style={{
+                          color: "white",
+                          padding: 0,
+                          margin: 0,
+                          fontFamily: "poppins",
+                          fontSize: 14,
+                        }}
+                        variant="text"
+                      >
+                        Logout
+                      </Button>
+                    )}
                   </div>
 
                   <div className="controls-container">
