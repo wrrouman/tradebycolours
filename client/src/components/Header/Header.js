@@ -21,6 +21,7 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Stack from "@mui/material/Stack";
+import { useAuth0 } from "@auth0/auth0-react";
 
 //Ticker banner symbols
 const styles = {
@@ -119,9 +120,12 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
-export default function Header({ check, change }) {
+export default function Header({ check, change, user: userGoogle }) {
   //front end authorization code
   const [anchorEl, setAnchorEl] = useState(null);
+
+  const { user: userAuth0, logout } = useAuth0();
+
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -132,7 +136,11 @@ export default function Header({ check, change }) {
 
   //logout function
   const handleLogout = () => {
-    window.open(`${process.env.REACT_APP_API_URL}/auth/logout`, "_self");
+    if (userAuth0) {
+      logout();
+    } else if (userGoogle) {
+      window.open(`${process.env.REACT_APP_API_URL}/auth/logout`, "_self");
+    }
     setAnchorEl(null);
   };
 
@@ -171,9 +179,9 @@ export default function Header({ check, change }) {
                     <Link to={"/About"} id="link">
                       <div className="header_about">ABOUT</div>
                     </Link>
-
                     {/* Logout Button */}
-                    <Button
+                    {/* If user is logged in using auth0 or google, show logout button, otherwise hide it */}
+                    {(userAuth0 || userGoogle) && <Button
                       onClick={handleLogout}
                       style={{
                         color: "white",
@@ -185,7 +193,7 @@ export default function Header({ check, change }) {
                       variant="text"
                     >
                       Logout
-                    </Button>
+                    </Button>}
                   </div>
 
                   <div className="controls-container">

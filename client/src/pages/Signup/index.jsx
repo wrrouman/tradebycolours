@@ -1,5 +1,14 @@
+//NO longer needed as I switched to Auth0
+
+//Keeping for future reference
+
+
+
 import { Link } from "react-router-dom";
 import styles from "./styles.module.scss";
+
+
+
 
 function Signup() {
 	const googleAuth = () => {

@@ -17,8 +17,11 @@ import Watchlist from "./components/Watchlist/Watchlist";
 
 //Authorrization
 import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import Login from "./pages/Login"; // TEMP
+import Signup from "./pages/Signup"; // TEMP
+import SignupAuth0 from "./pages/SignupAuth0";
+import LoginAuth0 from "./pages/LoginAuth0";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const apiKey = "0f94898a0e174bf3ab5fe7600a1ba572";
 const symbol = "SPY";
@@ -27,7 +30,11 @@ const interval = "1day";
 const url = `https://api.twelvedata.com/time_series?symbol=${symbol}&interval=${interval}&apikey=${apiKey}`;
 
 function App() {
+  //Google user authrntication -- allows redirect to main page if logged in 
   const [user, setUser] = useState(null);
+
+  // get user detail from auth0 to check if user is logged in for redirect, you can also use isAuthenticated
+  const { user: userAuth0, isLoading } = useAuth0();
 
   const getUser = async () => {
     try {
@@ -36,7 +43,7 @@ function App() {
 
       setUser(data.user._json);
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
   };
 
@@ -55,31 +62,45 @@ function App() {
     <>
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
-        <Header check={darkMode} change={() => setDarkMode(!darkMode)} />
+        <Header
+          check={darkMode}
+          change={() => setDarkMode(!darkMode)}
+          user={user} // pass user details to header to show user details
+        />
         <div id="app">
-        <Routes >
-        
-          <Route className="routes-container"
-            exact
-            path="/"
-            element={user ? <Sectors /> : <Navigate to="/login" />}
-          />
-          <Route
-            exact
-            path="/login"
-            element={user ? <Navigate to="/" /> : <Login />}
-          />
-          <Route
-            path="/signup"
-            element={user ? <Navigate to="/" /> : <Signup />}
-          />
-         
-          <Route path="/sector/:sectorSymbol" element={<Sector />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/sectors" element={<Sectors />} />
-          <Route path="/watchlist" element={<Watchlist user={user} />} />
-         
-        </Routes>
+          {/* Display loading until it's checking if user is logged in */}
+          {isLoading ? (
+            <div>Loading...</div>
+          ) : (
+            <Routes>
+              <Route
+                className="routes-container"
+                exact
+                path="/"
+                element={
+                  user || userAuth0 ? <Sectors /> : <Navigate to="/login" />
+                }
+              />
+              <Route
+                exact
+                path="/login"
+                element={
+                  user || userAuth0 ? <Navigate to="/" /> : <LoginAuth0 />
+                }
+              />
+              <Route
+                path="/signup"
+                element={
+                  user || userAuth0 ? <Navigate to="/" /> : <SignupAuth0 />
+                }
+              />
+
+              <Route path="/sector/:sectorSymbol" element={<Sector />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/sectors" element={<Sectors />} />
+              <Route path="/watchlist" element={<Watchlist user={user} />} />
+            </Routes>
+          )}
         </div>
       </ThemeProvider>
     </>
