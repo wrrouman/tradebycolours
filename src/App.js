@@ -30,7 +30,7 @@ const interval = "1day";
 const url = `https://api.twelvedata.com/time_series?symbol=${symbol}&interval=${interval}&apikey=${apiKey}`;
 
 function App() {
-  //Google user authrntication -- allows redirect to main page if logged in 
+  //Google user authrntication -- allows redirect to main page if logged in
   const [user, setUser] = useState(null);
 
   // get user detail from auth0 to check if user is logged in for redirect, you can also use isAuthenticated
@@ -98,7 +98,11 @@ function App() {
               <Route path="/sector/:sectorSymbol" element={<Sector />} />
               <Route path="/about" element={<About />} />
               <Route path="/sectors" element={<Sectors />} />
-              <Route path="/watchlist" element={<Watchlist  user={user || userAuth0}/>} />
+              {/* user email parameter need to access and save stocks in the watchlist  for local storage */}
+              <Route
+                path="/watchlist"
+                element={<Watchlist user={user || userAuth0} />}
+              />
             </Routes>
           )}
         </div>

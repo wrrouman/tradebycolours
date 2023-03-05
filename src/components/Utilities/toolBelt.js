@@ -1,5 +1,6 @@
-//this disaster of code below was an attempt at only showing tow decimals for the incoming API data
 
+
+//this disaster of code below was an attempt at only showing tow decimals for the incoming API data
 const formatQuoteData = (quotesObject) => {
   const formattedQuotesObject = { ...quotesObject };
   for (let stockKey in formattedQuotesObject) {
@@ -22,7 +23,6 @@ const formatQuoteData = (quotesObject) => {
 };
 
 //color coding logic
-
 const momentumStatuses = {
   POSITIVE: "POSITIVE",
   NEUTRAL: "NEUTRAL",

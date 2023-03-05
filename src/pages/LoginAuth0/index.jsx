@@ -14,10 +14,6 @@ function LoginAuth0() {
 		);
 	};
 
-	const onLoginClick = () => {
-		alert("Login clicked")
-	}
-
 
 	return (
 		<div className={styles.container}>
