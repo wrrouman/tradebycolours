@@ -138,7 +138,9 @@ export default function Header({ check, change, user: userGoogle }) {
   const handleLogout = () => {
     if (userAuth0) {
       logout({
-        returnTo: window.location.origin,
+        logoutParams: {
+          returnTo: window.location.origin,
+        },
       });
     } else if (userGoogle) {
       window.open(`${process.env.REACT_APP_API_URL}/auth/logout`, "_self");
