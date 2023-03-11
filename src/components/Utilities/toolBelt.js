@@ -22,7 +22,7 @@ const formatQuoteData = (quotesObject) => {
   return formattedQuotesObject;
 };
 
-//color coding logic
+//color coding logic or card background and short term entry exit signal
 const momentumStatuses = {
   POSITIVE: "POSITIVE",
   NEUTRAL: "NEUTRAL",

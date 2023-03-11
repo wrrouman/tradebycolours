@@ -19,7 +19,7 @@ function WatchListSearch({ addToWatchList, stockSymbols }) {
     // sanitize the users input, so they can type garbage that wont break the system
     // "     aApL    " => "AAPL"
     const stockSymbolToAdd = data.get("watchlist-search").trim().toUpperCase();
-    // sanitized data means we are able to use strict equality, reduces uncertainty of our application
+    // sanitized data means it helps prevent user errors when typing in stock symbols
     const stockSymbolExists = stockSymbols.find(stock => stock.symbol === stockSymbolToAdd)
     if (stockSymbolExists) {
       // call another function which we write in WatchList.js and pass down as props

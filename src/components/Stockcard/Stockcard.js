@@ -50,6 +50,7 @@ const StockCard = ({
 
     const { POSITIVE, NEGATIVE, NEUTRAL } = momentumStatuses;
 
+    //color code for main card background = Color
     let color = "";
     switch (momentumStatus) {
       case POSITIVE:
@@ -78,8 +79,8 @@ const StockCard = ({
 
     const { POSITIVE, NEGATIVE, NEUTRAL } = momentumStatuses;
 
+      //color code or entry exit signal = color2
     let color2 = "";
-
     switch (momentumStatus) {
       case POSITIVE:
         color2 = "green";
@@ -94,9 +95,13 @@ const StockCard = ({
 
         break;
     }
+    //this color codes the entry exit signal box within the stockcard
     const momentumStyle = { backgroundColor: color2 };
     return momentumStyle;
   };
+
+  //this allows the main sector page cards to be clickable and redirect to another page
+  //it prevents the individual sotck card from redirecting (Can remove this for adding addional routs to individual stocks, such as a chard)
   let sectorLink;
   if (isSector) {
     sectorLink = stock.symbol === "SPY" ? "/" : `/sector/${stock.symbol}`;

@@ -18,14 +18,14 @@ function WatchList({ user }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // if the user is not logged in, user.email doesn't exist
+    // if the user is not logged in, user.email doesn't exist 
     // ?. operator => nullish coalescing operator
     //  if the value is there, use it, if it doesn't exist, instead of throwing an error just use null
     if (!user?.email) {
       return navigate("/");
     }
 
-    //had to filter out stocks by country to reduce by 80,000
+  // .Then or the main stock symobol API call of "United States" stocks 
     getStocks().then((response) => {
       const stocks = response.data.data;
       setStockSymbols(stocks);
